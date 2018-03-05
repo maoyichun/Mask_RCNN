@@ -124,7 +124,8 @@ class CocoDataset(utils.Dataset):
             image_ids = list(set(image_ids))
         else:
             # All images
-            image_ids = list(coco.imgs.keys())
+            # image_ids = list(coco.imgs.keys())  # 可以改成image_ids = list(coco.getImgIds()) ?
+            image_ids = list(coco.getImgIds())
 
         # Add classes
         for i in class_ids:
