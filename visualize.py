@@ -240,7 +240,9 @@ def display_top_masks(image, mask, class_ids, class_names, limit=4):
         m = np.sum(m * np.arange(1, m.shape[-1] + 1), -1)
         to_display.append(m)
         titles.append(class_names[class_id] if class_id != -1 else "-")
+    # cmap参数控制显示的颜色（mask最后显示成蓝色）
     display_images(to_display, titles=titles, cols=limit + 1, cmap="Blues_r")
+    # display_images(to_display, titles=titles, cols=limit + 1)
 
 
 def plot_precision_recall(AP, precisions, recalls):

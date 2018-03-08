@@ -276,11 +276,13 @@ class CocoDataset(utils.Dataset):
             super(CocoDataset, self).image_reference(image_id)
 
     # The following two functions are from pycocotools with a few changes.
+    # 下两个函数从pycocotools拿出来的，做了一些修改，用于将dataset中的annotation字段先转换成RLE（run-length encoding）,
+    # 再转换成Mask(0,1长序列，按列优先存储（mask.py注释中交代的）)
 
     def annToRLE(self, ann, height, width):
         """
         Convert annotation which can be polygons, uncompressed RLE to RLE.
-        :return: binary mask (numpy 2D array)
+        :return: binary mask (numpy 2D array) 这里是否写错了？返回值应该是RLE
         """
         segm = ann['segmentation']
         if isinstance(segm, list):
